@@ -1,0 +1,2040 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sol i Lluna - Centro de nutrición personalizada. Equilibra tu alimentación con tus ritmos naturales. Reserva tu consulta online.">
+    <meta name="keywords" content="nutrición, dietista, nutricionista, salud, bienestar, consulta nutricional, dieta personalizada">
+    <title>Sol i Lluna | Centro de Nutrición y Bienestar</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-primary: #FFFBF5;
+            --bg-secondary: #FDF6EC;
+            --bg-dark: #2D2926;
+            --bg-moon: #4A4063;
+            --text-primary: #2D2926;
+            --text-secondary: #5C5552;
+            --text-light: #FFFFFF;
+            --accent-sun: #E8A838;
+            --accent-sun-dark: #D4942F;
+            --accent-moon: #6B5B95;
+            --accent-moon-light: #8B7BB5;
+            --card-bg: #FFFFFF;
+            --border-light: rgba(45, 41, 38, 0.08);
+            --shadow-soft: 0 4px 20px rgba(45, 41, 38, 0.06);
+            --shadow-medium: 0 8px 40px rgba(45, 41, 38, 0.12);
+            --shadow-strong: 0 12px 50px rgba(45, 41, 38, 0.18);
+            --gradient-sun: linear-gradient(135deg, #F6D365 0%, #E8A838 100%);
+            --gradient-moon: linear-gradient(135deg, #8B7BB5 0%, #6B5B95 100%);
+            --gradient-dark: linear-gradient(135deg, #2D2926 0%, #1a1816 100%);
+            --gradient-hero: linear-gradient(180deg, #FFFBF5 0%, #FFF3E0 100%);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1A1A2E;
+            --bg-secondary: #16213E;
+            --bg-dark: #0F0F1A;
+            --bg-moon: #252540;
+            --text-primary: #F5F5F5;
+            --text-secondary: #B8B8C8;
+            --text-light: #FFFFFF;
+            --accent-sun: #E8A838;
+            --accent-sun-dark: #D4942F;
+            --accent-moon: #8B7BB5;
+            --accent-moon-light: #A899C5;
+            --card-bg: #1F1F3A;
+            --border-light: rgba(255, 255, 255, 0.08);
+            --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.2);
+            --shadow-medium: 0 8px 40px rgba(0, 0, 0, 0.3);
+            --shadow-strong: 0 12px 50px rgba(0, 0, 0, 0.4);
+            --gradient-sun: linear-gradient(135deg, #F6D365 0%, #E8A838 100%);
+            --gradient-moon: linear-gradient(135deg, #8B7BB5 0%, #6B5B95 100%);
+            --gradient-dark: linear-gradient(135deg, #0F0F1A 0%, #1A1A2E 100%);
+            --gradient-hero: linear-gradient(180deg, #1A1A2E 0%, #16213E 100%);
+        }
+
+        [data-theme="dark"] .hero {
+            background: linear-gradient(135deg, #1A1A2E 0%, #16213E 30%, #1F1F3A 60%, #252540 100%);
+        }
+
+        [data-theme="dark"] .services {
+            background: linear-gradient(180deg, #16213E 0%, #1A1A2E 50%, #1F1F3A 100%);
+        }
+
+        [data-theme="dark"] .hero-badge {
+            background: rgba(139, 123, 181, 0.2);
+            border-color: rgba(139, 123, 181, 0.3);
+        }
+
+        [data-theme="dark"] .stat-item {
+            background: var(--card-bg);
+            border-color: rgba(139, 123, 181, 0.2);
+        }
+
+        [data-theme="dark"] .service-card {
+            border-color: rgba(139, 123, 181, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-primary);
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled {
+            padding: 0.7rem 5%;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            position: relative;
+        }
+
+        .logo-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: 1px;
+        }
+
+        .logo-text span {
+            color: var(--accent-sun);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-moon);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-moon);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn-cta {
+            background: var(--gradient-sun);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(232, 168, 56, 0.3);
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(232, 168, 56, 0.4);
+        }
+
+        #theme-toggle {
+            background: var(--bg-secondary);
+            border: 2px solid var(--accent-moon);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            color: var(--accent-moon);
+        }
+
+        #theme-toggle:hover {
+            background: var(--gradient-moon);
+            border-color: transparent;
+            color: white;
+            transform: rotate(20deg);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--text-primary);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 5% 80px;
+            background: linear-gradient(135deg, #FFF9F0 0%, #FFF3E0 30%, #F5EFE6 60%, #EDE7F6 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(232, 168, 56, 0.2) 0%, rgba(232, 168, 56, 0.05) 40%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -5%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(107, 91, 149, 0.2) 0%, rgba(107, 91, 149, 0.05) 40%, transparent 70%);
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
+        }
+
+        /* Decorative shapes */
+        .hero .deco-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        .hero .deco-1 {
+            width: 20px;
+            height: 20px;
+            background: var(--accent-sun);
+            top: 20%;
+            left: 10%;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .hero .deco-2 {
+            width: 12px;
+            height: 12px;
+            background: var(--accent-moon);
+            top: 30%;
+            right: 15%;
+            animation: pulse 4s ease-in-out infinite 1s;
+        }
+
+        .hero .deco-3 {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-sun);
+            bottom: 25%;
+            left: 20%;
+            animation: pulse 3.5s ease-in-out infinite 0.5s;
+        }
+
+        .hero .deco-4 {
+            width: 15px;
+            height: 15px;
+            background: var(--accent-moon);
+            bottom: 35%;
+            right: 10%;
+            animation: pulse 4.5s ease-in-out infinite 1.5s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.5); opacity: 0.3; }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(107, 91, 149, 0.1) 0%, rgba(232, 168, 56, 0.1) 100%);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-moon);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(107, 91, 149, 0.2);
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--accent-sun) 0%, #D4942F 50%, var(--accent-moon) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            font-weight: 400;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient-sun);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(232, 168, 56, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(232, 168, 56, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 2px solid var(--accent-moon);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--gradient-moon);
+            border-color: transparent;
+            color: white;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin-top: 4rem;
+            padding: 0;
+            background: transparent;
+            border-radius: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem 2.5rem;
+            background: var(--card-bg);
+            border: 1px solid rgba(107, 91, 149, 0.15);
+        }
+
+        .stat-item:first-child {
+            border-radius: 20px 0 0 20px;
+            border-right: none;
+        }
+
+        .stat-item:last-child {
+            border-radius: 0 20px 20px 0;
+            border-left: none;
+        }
+
+        .stat-item:nth-child(2) {
+            background: linear-gradient(135deg, var(--accent-moon) 0%, #5A4A84 100%);
+            border: none;
+        }
+
+        .stat-item:nth-child(2) .stat-number,
+        .stat-item:nth-child(2) .stat-label {
+            color: white;
+            -webkit-text-fill-color: white;
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient-moon);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 0.3rem;
+        }
+
+        /* Section Common Styles */
+        section {
+            padding: 100px 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent-moon);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        .services .section-tag {
+            color: var(--accent-moon);
+        }
+
+        /* About Section */
+        .about {
+            background: var(--gradient-dark);
+            color: var(--text-light);
+        }
+
+        .about .section-tag {
+            color: var(--accent-sun);
+        }
+
+        .about .about-content h2 {
+            color: var(--text-light);
+        }
+
+        .about .about-content p {
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .about .about-feature span {
+            color: var(--text-light);
+        }
+
+        .about .about-feature-icon {
+            color: var(--accent-sun);
+        }
+
+        .about .about-badge {
+            background: var(--card-bg);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .about-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .about-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--card-bg);
+            padding: 20px 30px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-medium);
+            text-align: center;
+        }
+
+        .about-badge-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-sun);
+            line-height: 1;
+        }
+
+        .about-badge-text {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .about-content h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .about-feature-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--accent-sun);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .about-feature span {
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        /* Services Section */
+        .services {
+            background: linear-gradient(180deg, #FDF8F3 0%, #FFF9F0 50%, #F8F4FF 100%);
+            position: relative;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-sun) 0%, var(--accent-moon) 100%);
+        }
+
+        .services::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-moon) 0%, var(--accent-sun) 100%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 3rem 2.5rem;
+            border-radius: 24px;
+            border: 2px solid rgba(107, 91, 149, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(45, 41, 38, 0.05);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-sun);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-strong);
+            border-color: var(--accent-moon);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Cards destacadas con fondo morado */
+        .service-card.featured {
+            background: var(--gradient-moon);
+            border: none;
+        }
+
+        .service-card.featured::before {
+            background: var(--gradient-sun);
+        }
+
+        .service-card.featured .service-icon {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .service-card.featured h3,
+        .service-card.featured p,
+        .service-card.featured .service-features li {
+            color: var(--text-light);
+        }
+
+        .service-card.featured p {
+            opacity: 0.85;
+        }
+
+        .service-card.featured .service-features li::before {
+            background: var(--accent-sun);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(107, 91, 149, 0.15) 0%, rgba(232, 168, 56, 0.15) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border: 1px solid rgba(107, 91, 149, 0.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            padding: 8px 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-features li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent-sun);
+            border-radius: 50%;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--bg-moon);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(232, 168, 56, 0.1) 0%, transparent 70%);
+        }
+
+        .testimonials::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -100px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(139, 123, 181, 0.15) 0%, transparent 70%);
+        }
+
+        .testimonials .section-header {
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonials .section-tag {
+            color: var(--accent-sun);
+        }
+
+        .testimonials .section-title {
+            color: var(--text-light);
+        }
+
+        .testimonials .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: var(--shadow-strong);
+            position: relative;
+        }
+
+        .testimonial-quote {
+            font-size: 3rem;
+            color: var(--accent-moon);
+            opacity: 0.4;
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-family: serif;
+        }
+
+        .testimonial-text {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-moon);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-info h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .testimonial-info span {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Calculator Section */
+        .calculator {
+            background: linear-gradient(180deg, var(--bg-moon) 0%, var(--bg-dark) 100%);
+            position: relative;
+        }
+
+        .calculator .section-tag {
+            color: var(--accent-sun);
+        }
+
+        .calculator .section-title,
+        .calculator .section-subtitle {
+            color: var(--text-light);
+        }
+
+        .calculator .section-subtitle {
+            opacity: 0.8;
+        }
+
+        .calc-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .calc-box {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: var(--shadow-strong);
+        }
+
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .calc-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: border-color 0.3s ease;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--accent-sun);
+        }
+
+        .calc-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--gradient-sun);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(232, 168, 56, 0.3);
+        }
+
+        .calc-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(232, 168, 56, 0.4);
+        }
+
+        .calc-result {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            text-align: center;
+            display: none;
+        }
+
+        .calc-result.show {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .calc-result-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-sun);
+        }
+
+        .calc-result-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 0.3rem;
+        }
+
+        .calc-result-interpretation {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-light);
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        /* IMC Reference Table */
+        .imc-reference {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .imc-reference h4 {
+            color: var(--text-light);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .imc-table {
+            margin-bottom: 1.5rem;
+        }
+
+        .imc-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .imc-row.imc-header {
+            background: transparent;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .imc-row.bajo-peso {
+            background: rgba(52, 152, 219, 0.2);
+            color: #5dade2;
+        }
+
+        .imc-row.peso-normal {
+            background: rgba(39, 174, 96, 0.2);
+            color: #58d68d;
+        }
+
+        .imc-row.sobrepeso {
+            background: rgba(243, 156, 18, 0.2);
+            color: #f5b041;
+        }
+
+        .imc-row.obesidad {
+            background: rgba(231, 76, 60, 0.2);
+            color: #ec7063;
+        }
+
+        .imc-gender-note {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .gender-info {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 12px;
+            border-radius: 12px;
+        }
+
+        .gender-icon {
+            font-size: 1.5rem;
+            color: var(--accent-sun);
+        }
+
+        .gender-info strong {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .gender-info p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.8rem;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .imc-disclaimer {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Booking Section */
+        .booking {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1a1816 50%, var(--bg-moon) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(232, 168, 56, 0.15) 0%, transparent 60%);
+        }
+
+        .booking::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(139, 123, 181, 0.2) 0%, transparent 60%);
+        }
+
+        .booking-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .booking .section-tag {
+            color: var(--accent-sun);
+        }
+
+        .booking .section-title {
+            color: var(--text-light);
+        }
+
+        .booking .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .booking-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 30px;
+            box-shadow: var(--shadow-strong);
+            min-height: 550px;
+        }
+
+        #stickywork-widget {
+            min-height: 500px;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, #0d0c0b 100%);
+            color: var(--bg-primary);
+            padding: 80px 5% 30px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-sun) 0%, var(--accent-moon) 100%);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-brand .logo-text {
+            color: var(--bg-primary);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg-primary);
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--accent-sun);
+            border-color: var(--accent-sun);
+        }
+
+        .footer-column h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            color: var(--bg-primary);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--accent-sun);
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+        }
+
+        .footer-contact-item svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            margin-top: 2px;
+            color: var(--accent-sun);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-legal a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--accent-sun);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-primary);
+            z-index: 999;
+            padding: 100px 5% 40px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            margin: 1rem 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-image {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .calc-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .input-row {
+                grid-template-columns: 1fr;
+            }
+
+            .imc-gender-note {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .btn-cta, #theme-toggle {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 0;
+                border-radius: 20px;
+                overflow: hidden;
+            }
+
+            .stat-item {
+                padding: 1.2rem 2rem;
+                border-radius: 0 !important;
+            }
+
+            .stat-item:first-child {
+                border-radius: 20px 20px 0 0 !important;
+                border-right: 1px solid rgba(107, 91, 149, 0.15) !important;
+                border-bottom: none;
+            }
+
+            .stat-item:last-child {
+                border-radius: 0 0 20px 20px !important;
+                border-left: 1px solid rgba(107, 91, 149, 0.15) !important;
+                border-top: none;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-legal {
+                justify-content: center;
+            }
+
+            .booking-container {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 60px 5%;
+            }
+
+            .hero {
+                padding: 100px 5% 60px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <a href="#" class="logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="25" r="12" fill="url(#sunGrad)"/>
+                    <path d="M35 25C35 18.4 29.6 13 23 13C29.6 13 35 7.6 35 1C35 7.6 40.4 13 47 13C40.4 13 35 18.4 35 25Z" fill="url(#moonGrad)"/>
+                    <defs>
+                        <linearGradient id="sunGrad" x1="8" y1="13" x2="32" y2="37" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#F6D365"/>
+                            <stop offset="1" stop-color="#E8A838"/>
+                        </linearGradient>
+                        <linearGradient id="moonGrad" x1="23" y1="1" x2="47" y2="25" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#6B5B95"/>
+                            <stop offset="1" stop-color="#5A4A84"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <span class="logo-text">Sol <span>i</span> Lluna</span>
+        </a>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#calculadora">IMC</a></li>
+            </ul>
+            <a href="#reserva" class="btn-cta">Reservar Cita</a>
+            <button id="theme-toggle" aria-label="Cambiar tema">
+                <span class="theme-icon">&#9790;</span>
+            </button>
+        </nav>
+
+        <button class="mobile-menu-btn" id="mobile-btn" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#nosotros" class="mobile-link">Nosotros</a>
+        <a href="#servicios" class="mobile-link">Servicios</a>
+        <a href="#testimonios" class="mobile-link">Testimonios</a>
+        <a href="#calculadora" class="mobile-link">Calculadora IMC</a>
+        <a href="#reserva" class="mobile-link">Reservar Cita</a>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="deco-shape deco-1"></div>
+            <div class="deco-shape deco-2"></div>
+            <div class="deco-shape deco-3"></div>
+            <div class="deco-shape deco-4"></div>
+            <div class="hero-content">
+                <span class="hero-badge">Centro de Nutrición</span>
+                <h1>Nutre tu cuerpo,<br><span class="highlight">equilibra tu vida</span></h1>
+                <p class="hero-subtitle">Planes de alimentación personalizados que se adaptan a tus ritmos naturales. Energía durante el día, descanso reparador por la noche.</p>
+                <div class="hero-buttons">
+                    <a href="#reserva" class="btn-primary">Reserva tu Consulta</a>
+                    <a href="#servicios" class="btn-secondary">Conoce Nuestros Servicios</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">+500</div>
+                        <div class="stat-label">Pacientes Atendidos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Años de Experiencia</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Satisfacción</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="nosotros" class="about">
+            <div class="about-grid">
+                <div class="about-image">
+                    <div class="about-image-wrapper">
+                        <img src="imagenes/Gemini_Generated_Image_nxswstnxswstnxsw.png" alt="Fachada Sol i Lluna - Centro de dietética y salud" class="about-img">
+                    </div>
+                    <div class="about-badge">
+                        <div class="about-badge-number">+500</div>
+                        <div class="about-badge-text">Vidas transformadas</div>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="section-tag">Nuestra Filosofía</span>
+                    <h2>Alimentación consciente para cada momento del día</h2>
+                    <p>En Sol i Lluna creemos que la nutrición va más allá de contar calorías. Nuestro enfoque se basa en sincronizar tu alimentación con los ritmos circadianos de tu cuerpo, optimizando tu energía durante el día y favoreciendo un descanso reparador por la noche.</p>
+                    <p>Cada plan nutricional que diseñamos es único, porque tú eres único. Combinamos la ciencia de la cronobiología con las necesidades específicas de tu estilo de vida para crear una relación saludable y sostenible con la comida.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <svg class="about-feature-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                            <span>Planes 100% personalizados</span>
+                        </div>
+                        <div class="about-feature">
+                            <svg class="about-feature-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                            <span>Seguimiento continuo</span>
+                        </div>
+                        <div class="about-feature">
+                            <svg class="about-feature-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                            <span>Enfoque científico</span>
+                        </div>
+                        <div class="about-feature">
+                            <svg class="about-feature-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                            <span>Sin dietas restrictivas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="servicios" class="services">
+            <div class="section-header">
+                <span class="section-tag">Nuestros Servicios</span>
+                <h2 class="section-title">Soluciones nutricionales para cada necesidad</h2>
+                <p class="section-subtitle">Descubre cómo podemos ayudarte a alcanzar tus objetivos de salud con un enfoque integral y personalizado.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">&#9728;</div>
+                    <h3>Consulta Inicial</h3>
+                    <p>Evaluación completa de tu estado nutricional, hábitos alimentarios y objetivos personales para diseñar tu plan ideal.</p>
+                    <ul class="service-features">
+                        <li>Análisis de composición corporal</li>
+                        <li>Historia clínica nutricional</li>
+                        <li>Plan alimentario personalizado</li>
+                        <li>Pautas y recomendaciones</li>
+                    </ul>
+                </div>
+                <div class="service-card featured">
+                    <div class="service-icon">&#127793;</div>
+                    <h3>Nutrición Deportiva</h3>
+                    <p>Optimiza tu rendimiento físico con planes diseñados específicamente para deportistas y personas activas.</p>
+                    <ul class="service-features">
+                        <li>Periodización nutricional</li>
+                        <li>Estrategias pre y post entreno</li>
+                        <li>Suplementación basada en evidencia</li>
+                        <li>Recuperación optimizada</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">&#127813;</div>
+                    <h3>Control de Peso</h3>
+                    <p>Alcanza y mantén tu peso ideal de forma saludable y sostenible, sin dietas restrictivas ni efecto rebote.</p>
+                    <ul class="service-features">
+                        <li>Pérdida de grasa corporal</li>
+                        <li>Ganancia de masa muscular</li>
+                        <li>Educación nutricional</li>
+                        <li>Cambio de hábitos duradero</li>
+                    </ul>
+                </div>
+                <div class="service-card featured">
+                    <div class="service-icon">&#9789;</div>
+                    <h3>Nutrición y Descanso</h3>
+                    <p>Mejora la calidad de tu sueño a través de la alimentación. Descubre cómo lo que comes afecta cómo descansas.</p>
+                    <ul class="service-features">
+                        <li>Alimentos inductores del sueño</li>
+                        <li>Horarios de comidas optimizados</li>
+                        <li>Reducción del estrés oxidativo</li>
+                        <li>Equilibrio hormonal</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">&#129382;</div>
+                    <h3>Nutrición Clínica</h3>
+                    <p>Tratamiento nutricional especializado para patologías específicas y condiciones de salud particulares.</p>
+                    <ul class="service-features">
+                        <li>Diabetes y resistencia a insulina</li>
+                        <li>Patologías digestivas</li>
+                        <li>Intolerancias alimentarias</li>
+                        <li>Trastornos metabólicos</li>
+                    </ul>
+                </div>
+                <div class="service-card featured">
+                    <div class="service-icon">&#128106;</div>
+                    <h3>Nutrición Familiar</h3>
+                    <p>Planes nutricionales para toda la familia. Aprende a cocinar sano y enseña buenos hábitos a los más pequeños.</p>
+                    <ul class="service-features">
+                        <li>Menús semanales familiares</li>
+                        <li>Nutrición infantil</li>
+                        <li>Recetas saludables y fáciles</li>
+                        <li>Organización de compras</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonios" class="testimonials">
+            <div class="section-header">
+                <span class="section-tag">Testimonios</span>
+                <h2 class="section-title">Lo que dicen nuestros pacientes</h2>
+                <p class="section-subtitle">Historias reales de personas que han transformado su relación con la alimentación.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <span class="testimonial-quote">"</span>
+                    <p class="testimonial-text">Después de años probando dietas sin éxito, en Sol i Lluna entendieron que mi problema era el enfoque. Ahora como mejor que nunca y he perdido 15 kg sin pasar hambre.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MG</div>
+                        <div class="testimonial-info">
+                            <h4>María García</h4>
+                            <span>Perdió 15 kg en 6 meses</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <span class="testimonial-quote">"</span>
+                    <p class="testimonial-text">Como deportista, necesitaba un plan que se adaptara a mis entrenamientos. Los resultados han sido increíbles: más energía, mejor recuperación y nuevas marcas personales.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JL</div>
+                        <div class="testimonial-info">
+                            <h4>Jordi López</h4>
+                            <span>Triatleta amateur</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <span class="testimonial-quote">"</span>
+                    <p class="testimonial-text">Tenía problemas de sueño desde hace años. Nunca imaginé que la alimentación pudiera influir tanto. Ahora duermo profundamente y me despierto con energía real.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AP</div>
+                        <div class="testimonial-info">
+                            <h4>Ana Puig</h4>
+                            <span>Mejoró su calidad de sueño</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calculator Section -->
+        <section id="calculadora" class="calculator">
+            <div class="section-header">
+                <span class="section-tag">Herramienta Gratuita</span>
+                <h2 class="section-title">Calcula tu Índice de Masa Corporal</h2>
+                <p class="section-subtitle">El IMC es una medida orientativa de tu estado nutricional. Un buen punto de partida para nuestra conversación.</p>
+            </div>
+
+            <div class="calc-wrapper">
+                <div class="calc-box">
+                    <h3>Calculadora IMC</h3>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="peso">Peso (kg)</label>
+                            <input type="number" id="peso" placeholder="Ej: 70" min="20" max="300">
+                        </div>
+                        <div class="input-group">
+                            <label for="altura">Altura (cm)</label>
+                            <input type="number" id="altura" placeholder="Ej: 170" min="100" max="250">
+                        </div>
+                    </div>
+                    <button class="calc-btn" onclick="calcularIMC()">Calcular mi IMC</button>
+                    <div class="calc-result" id="calc-result">
+                        <div class="calc-result-value" id="imc-value">--</div>
+                        <div class="calc-result-label">Tu IMC</div>
+                        <div class="calc-result-interpretation" id="imc-interpretation"></div>
+                    </div>
+                </div>
+
+                <div class="imc-reference">
+                    <h4>Rangos de referencia IMC</h4>
+                    <div class="imc-table">
+                        <div class="imc-row imc-header">
+                            <span>Categoría</span>
+                            <span>IMC</span>
+                        </div>
+                        <div class="imc-row bajo-peso">
+                            <span>Bajo peso</span>
+                            <span>&lt; 18.5</span>
+                        </div>
+                        <div class="imc-row peso-normal">
+                            <span>Peso saludable</span>
+                            <span>18.5 - 24.9</span>
+                        </div>
+                        <div class="imc-row sobrepeso">
+                            <span>Sobrepeso</span>
+                            <span>25 - 29.9</span>
+                        </div>
+                        <div class="imc-row obesidad">
+                            <span>Obesidad</span>
+                            <span>&ge; 30</span>
+                        </div>
+                    </div>
+                    <div class="imc-gender-note">
+                        <div class="gender-info">
+                            <span class="gender-icon">&#9794;</span>
+                            <div>
+                                <strong>Hombres</strong>
+                                <p>IMC óptimo: 20 - 25</p>
+                                <p>% grasa ideal: 10-20%</p>
+                            </div>
+                        </div>
+                        <div class="gender-info">
+                            <span class="gender-icon">&#9792;</span>
+                            <div>
+                                <strong>Mujeres</strong>
+                                <p>IMC óptimo: 19 - 24</p>
+                                <p>% grasa ideal: 18-28%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="imc-disclaimer">El IMC no distingue entre masa muscular y grasa. Deportistas pueden tener IMC alto siendo saludables. Consulta con un profesional para una valoración completa.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Section -->
+        <section id="reserva" class="booking">
+            <div class="booking-content">
+                <div class="section-header">
+                    <span class="section-tag">Agenda tu Cita</span>
+                    <h2 class="section-title">Comienza tu transformación hoy</h2>
+                    <p class="section-subtitle">Selecciona el día y la hora que mejor se adapte a tu agenda. La primera consulta incluye una evaluación completa.</p>
+                </div>
+                <div class="booking-container">
+                    <div id="stickywork-widget"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo-text">Sol <span style="color: var(--accent-sun);">i</span> Lluna</div>
+                <p>Centro de nutrición especializado en alimentación consciente y personalizada. Te acompañamos en tu camino hacia una vida más saludable.</p>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/solillunadiet/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="https://maps.google.com/?q=Solilluna,+Carrer+de+Suïssa,+32,+08211+Castellar+del+Vallès,+Barcelona" target="_blank" rel="noopener noreferrer" aria-label="Cómo llegar">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                    </a>
+                    <a href="tel:937473089" aria-label="Llamar">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="#nosotros">Sobre Nosotros</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#testimonios">Testimonios</a></li>
+                    <li><a href="#calculadora">Calculadora IMC</a></li>
+                    <li><a href="#reserva">Reservar Cita</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="#servicios">Consulta Inicial</a></li>
+                    <li><a href="#servicios">Nutrición Deportiva</a></li>
+                    <li><a href="#servicios">Control de Peso</a></li>
+                    <li><a href="#servicios">Nutrición Clínica</a></li>
+                    <li><a href="#servicios">Nutrición Familiar</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contacto</h4>
+                <div class="footer-contact-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    <a href="https://maps.google.com/?q=Solilluna,+Carrer+de+Suïssa,+32,+08211+Castellar+del+Vallès,+Barcelona" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">
+                        <span>Carrer de Suïssa, 32<br>08211 Castellar del Vallès<br>Barcelona</span>
+                    </a>
+                </div>
+                <div class="footer-contact-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                    </svg>
+                    <a href="tel:937473089" style="color: inherit; text-decoration: none;">
+                        <span>937 473 089</span>
+                    </a>
+                </div>
+                <div class="footer-contact-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/>
+                        <circle cx="12" cy="12" r="3.5"/>
+                    </svg>
+                    <a href="https://www.instagram.com/solillunadiet/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">
+                        <span>@solillunadiet</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Sol i Lluna - Centro de Nutrición. Todos los derechos reservados.</p>
+            <div class="footer-legal">
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Aviso Legal</a>
+                <a href="#">Cookies</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- StickyWork Integration - DO NOT MODIFY -->
+    <script src="https://api.stickywork.com/widget/stickywork-widget.js"></script>
+    <script>
+        StickyWork.init({
+            businessId: 12,
+            mode: 'embedded',
+            apiUrl: 'https://api.stickywork.com'
+        });
+    </script>
+    <!-- End StickyWork Integration -->
+
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('.theme-icon');
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+            themeIcon.innerHTML = '&#9728;';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            if (document.body.hasAttribute('data-theme')) {
+                document.body.removeAttribute('data-theme');
+                themeIcon.innerHTML = '&#9790;';
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+                themeIcon.innerHTML = '&#9728;';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Mobile menu
+        const mobileBtn = document.getElementById('mobile-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            mobileBtn.classList.toggle('active');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                mobileBtn.classList.remove('active');
+            });
+        });
+
+        // IMC Calculator
+        function calcularIMC() {
+            const peso = parseFloat(document.getElementById('peso').value);
+            const altura = parseFloat(document.getElementById('altura').value) / 100;
+            const resultDiv = document.getElementById('calc-result');
+            const imcValue = document.getElementById('imc-value');
+            const imcInterpretation = document.getElementById('imc-interpretation');
+
+            if (peso > 0 && altura > 0) {
+                const imc = (peso / (altura * altura)).toFixed(1);
+                imcValue.textContent = imc;
+
+                let interpretation = '';
+                let color = '';
+
+                if (imc < 18.5) {
+                    interpretation = 'Bajo peso. Te recomendamos una consulta para valorar tu estado nutricional.';
+                    color = '#3498db';
+                } else if (imc < 25) {
+                    interpretation = 'Peso saludable. Mantén tus buenos hábitos alimenticios.';
+                    color = '#27ae60';
+                } else if (imc < 30) {
+                    interpretation = 'Sobrepeso. Un plan nutricional personalizado puede ayudarte a mejorar.';
+                    color = '#f39c12';
+                } else {
+                    interpretation = 'Obesidad. Te recomendamos agendar una consulta para un tratamiento integral.';
+                    color = '#e74c3c';
+                }
+
+                imcValue.style.color = color;
+                imcInterpretation.textContent = interpretation;
+                resultDiv.classList.add('show');
+            } else {
+                imcValue.textContent = '--';
+                imcInterpretation.textContent = 'Por favor, introduce valores válidos de peso y altura.';
+                resultDiv.classList.add('show');
+            }
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Animate elements on scroll
+        document.querySelectorAll('.service-card, .testimonial-card, .about-feature').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>

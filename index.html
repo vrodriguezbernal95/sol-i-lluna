@@ -2100,7 +2100,7 @@
             <div class="footer-legal">
                 <a href="politica-privacidad.html" data-i18n="footer_privacy">Política de Privacidad</a>
                 <a href="aviso-legal.html" data-i18n="footer_legal">Aviso Legal</a>
-                <a href="#">Cookies</a>
+                <a href="#" id="footer-cookies-link" data-i18n="footer_cookies">Cookies</a>
             </div>
         </div>
     </footer>
@@ -2703,6 +2703,14 @@
                 if (e.target === cookieModal) {
                     document.getElementById('cmp-close-modal').click();
                 }
+            });
+
+            // Footer "Cookies" link opens CMP modal
+            document.getElementById('footer-cookies-link').addEventListener('click', (e) => {
+                e.preventDefault();
+                loadConsent();
+                reopenBtn.classList.remove('show');
+                cookieModal.classList.add('show');
             });
 
         // IMC Calculator with translations

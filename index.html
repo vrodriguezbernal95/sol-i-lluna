@@ -1650,7 +1650,7 @@
             background: var(--card-bg);
             border-radius: 50%;
             box-shadow: var(--shadow-medium);
-            display: flex;
+            display: none;
             align-items: center;
             justify-content: center;
             cursor: pointer;
@@ -1659,6 +1659,7 @@
             transition: transform 0.3s;
             color: var(--accent-moon);
         }
+        .cookie-reopen-btn.show { display: flex; }
         .cookie-reopen-btn:hover { transform: scale(1.1); }
         .cookie-reopen-btn svg { width: 24px; height: 24px; }
 
@@ -2615,19 +2616,93 @@
             setLanguage(currentLang);
         }
 
-            // Cookie Banner Logic
+            // CMP (Cookie Management Platform) Logic
             const cookieBanner = document.getElementById('cookie-banner');
-            const acceptCookiesBtn = document.getElementById('accept-cookies');
+            const cookieModal = document.getElementById('cookie-modal');
+            const reopenBtn = document.getElementById('cookie-reopen-btn');
+            const checkAnalytics = document.getElementById('cmp-check-analytics');
+            const checkMarketing = document.getElementById('cmp-check-marketing');
 
-            if (!localStorage.getItem('cookiesAccepted')) {
-                setTimeout(() => {
-                    cookieBanner.classList.add('show');
-                }, 2000); // Show after 2 seconds
+            function saveConsent(analytics, marketing) {
+                const consent = { necessary: true, analytics: analytics, marketing: marketing };
+                localStorage.setItem('cookieConsent', JSON.stringify(consent));
+                cookieBanner.classList.remove('show');
+                cookieModal.classList.remove('show');
+                reopenBtn.classList.add('show');
             }
 
-            acceptCookiesBtn.addEventListener('click', () => {
-                localStorage.setItem('cookiesAccepted', 'true');
+            function loadConsent() {
+                const stored = localStorage.getItem('cookieConsent');
+                if (stored) {
+                    const consent = JSON.parse(stored);
+                    checkAnalytics.checked = consent.analytics;
+                    checkMarketing.checked = consent.marketing;
+                    return true;
+                }
+                return false;
+            }
+
+            // Show banner if no consent yet, otherwise show reopen button
+            if (!loadConsent()) {
+                setTimeout(() => { cookieBanner.classList.add('show'); }, 2000);
+            } else {
+                reopenBtn.classList.add('show');
+            }
+
+            // Banner: "Aceptar todo"
+            document.getElementById('cmp-accept-all').addEventListener('click', () => {
+                checkAnalytics.checked = true;
+                checkMarketing.checked = true;
+                saveConsent(true, true);
+            });
+
+            // Banner: "Configurar" -> open modal
+            document.getElementById('cmp-config').addEventListener('click', () => {
                 cookieBanner.classList.remove('show');
+                cookieModal.classList.add('show');
+            });
+
+            // Modal: close button
+            document.getElementById('cmp-close-modal').addEventListener('click', () => {
+                cookieModal.classList.remove('show');
+                if (!localStorage.getItem('cookieConsent')) {
+                    cookieBanner.classList.add('show');
+                } else {
+                    reopenBtn.classList.add('show');
+                }
+            });
+
+            // Modal: "Aceptar todo"
+            document.getElementById('cmp-accept-all-modal').addEventListener('click', () => {
+                checkAnalytics.checked = true;
+                checkMarketing.checked = true;
+                saveConsent(true, true);
+            });
+
+            // Modal: "Rechazar todo"
+            document.getElementById('cmp-reject-all').addEventListener('click', () => {
+                checkAnalytics.checked = false;
+                checkMarketing.checked = false;
+                saveConsent(false, false);
+            });
+
+            // Modal: "Guardar preferencias"
+            document.getElementById('cmp-save-prefs').addEventListener('click', () => {
+                saveConsent(checkAnalytics.checked, checkMarketing.checked);
+            });
+
+            // Floating button: reopen modal
+            reopenBtn.addEventListener('click', () => {
+                loadConsent();
+                reopenBtn.classList.remove('show');
+                cookieModal.classList.add('show');
+            });
+
+            // Close modal on overlay click
+            cookieModal.addEventListener('click', (e) => {
+                if (e.target === cookieModal) {
+                    document.getElementById('cmp-close-modal').click();
+                }
             });
 
         // IMC Calculator with translations

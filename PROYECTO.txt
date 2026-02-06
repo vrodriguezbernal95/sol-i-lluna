@@ -1,0 +1,173 @@
+================================================================================
+                        PROYECTO: SOL I LLUNA
+                    Landing Page - Centro de Nutrición
+================================================================================
+
+DESCRIPCIÓN DEL NEGOCIO:
+------------------------
+Sol i Lluna es un centro de dietética y salud ubicado en Castellar del Vallès,
+Barcelona. Ofrece servicios de nutrición personalizada con un enfoque basado
+en los ritmos circadianos (energía de día, descanso de noche).
+
+DATOS DE CONTACTO REALES:
+-------------------------
+- Dirección: Carrer de Suïssa, 32, 08211 Castellar del Vallès, Barcelona
+- Teléfono: 937 473 089
+- Instagram: https://www.instagram.com/solillunadiet/
+
+URL DE LA WEB:
+--------------
+https://vrodriguezbernal95.github.io/sol-i-lluna/
+
+REPOSITORIO GITHUB:
+-------------------
+https://github.com/vrodriguezbernal95/sol-i-lluna
+
+================================================================================
+                            ESTRUCTURA DEL PROYECTO
+================================================================================
+
+ARCHIVOS:
+---------
+/Sol i lluna/
+├── index.html                  → Página principal (todo el código)
+├── .nojekyll                   → Archivo para acelerar GitHub Pages
+├── PROYECTO.txt                → Este archivo de documentación
+└── imagenes/
+    ├── Gemini_Generated_Image_nxswstnxswstnxsw.png  → Foto fachada del negocio
+    └── image.png               → Capturas de pantalla temporales
+
+================================================================================
+                            CARACTERÍSTICAS DE LA WEB
+================================================================================
+
+SECCIONES:
+----------
+1. HEADER
+   - Logo SVG personalizado (sol + luna)
+   - Navegación con enlaces a secciones
+   - Botón "Reservar Cita"
+   - Toggle modo día/noche (guarda preferencia en localStorage)
+   - Menú móvil responsive
+
+2. HERO
+   - Título con gradiente sol-luna
+   - Subtítulo descriptivo
+   - Botones CTA (Reservar / Conocer Servicios)
+   - Estadísticas: +500 pacientes, 8 años experiencia, 98% satisfacción
+   - Elementos decorativos animados
+
+3. NOSOTROS (About)
+   - Foto de la fachada del negocio
+   - Filosofía del centro
+   - Características: planes personalizados, seguimiento, enfoque científico, sin dietas restrictivas
+   - Badge "+500 vidas transformadas"
+
+4. SERVICIOS (6 tarjetas)
+   - Consulta Inicial
+   - Nutrición Deportiva (destacada en morado)
+   - Control de Peso
+   - Nutrición y Descanso (destacada en morado)
+   - Nutrición Clínica
+   - Nutrición Familiar (destacada en morado)
+
+5. TESTIMONIOS
+   - 3 testimonios de pacientes ficticios
+   - Fondo morado oscuro para contraste
+
+6. CALCULADORA IMC
+   - Inputs para peso y altura
+   - Cálculo automático con interpretación por colores
+   - Tabla de referencia de rangos IMC
+   - Información específica para hombres y mujeres
+   - Fondo morado oscuro
+
+7. RESERVAS
+   - Integración con StickyWork (widget embebido)
+   - businessId: 12
+   - El código de StickyWork NO se debe modificar
+
+8. FOOTER
+   - Logo y descripción
+   - Enlaces de navegación
+   - Lista de servicios
+   - Información de contacto (con enlaces funcionales)
+   - Iconos sociales: Instagram, Google Maps, Teléfono
+   - Links legales (placeholder)
+
+================================================================================
+                            DISEÑO Y ESTILO
+================================================================================
+
+PALETA DE COLORES:
+------------------
+MODO CLARO:
+- Fondo principal: #FFFBF5 (crema claro)
+- Fondo secundario: #FDF6EC
+- Texto principal: #2D2926
+- Texto secundario: #5C5552
+- Acento Sol (dorado): #E8A838
+- Acento Luna (morado): #6B5B95
+
+MODO OSCURO:
+- Fondo principal: #1A1A2E
+- Fondo secundario: #16213E
+- Texto principal: #F5F5F5
+- Texto secundario: #B8B8C8
+- Cards: #1F1F3A
+
+TIPOGRAFÍAS (Google Fonts):
+---------------------------
+- Títulos: Cormorant Garamond (serif, elegante)
+- Cuerpo: Montserrat (sans-serif, moderna)
+
+CONTRASTE DE SECCIONES:
+-----------------------
+- Hero: Fondo claro con gradiente crema a lavanda
+- Nosotros: Fondo OSCURO (casi negro)
+- Servicios: Fondo claro con líneas decorativas sol-luna
+- Testimonios: Fondo MORADO oscuro
+- Calculadora: Fondo MORADO oscuro
+- Reservas: Fondo gradiente oscuro (negro a morado)
+- Footer: Fondo negro con línea degradada arriba
+
+================================================================================
+                            FUNCIONALIDADES JS
+================================================================================
+
+1. Toggle tema día/noche con persistencia en localStorage
+2. Header que se compacta al hacer scroll
+3. Menú móvil funcional
+4. Calculadora IMC con interpretación de resultados
+5. Scroll suave entre secciones
+6. Animaciones al hacer scroll (Intersection Observer)
+7. Widget StickyWork para reservas
+
+================================================================================
+                            NOTAS IMPORTANTES
+================================================================================
+
+- El código de StickyWork (líneas ~1917-1926) NO se debe modificar
+- La web es responsive (móvil, tablet, desktop)
+- Las imágenes están en la carpeta /imagenes/
+- El archivo .nojekyll es necesario para GitHub Pages
+
+================================================================================
+                            HISTORIAL DE CAMBIOS
+================================================================================
+
+1. Creación inicial de la landing page
+2. Mejora de contraste (zonas oscuras vs claras)
+3. Arreglo de calculadora IMC + tabla de referencia
+4. Añadida imagen real de la fachada
+5. Actualización de datos de contacto reales
+6. Subida a GitHub y activación de GitHub Pages
+
+================================================================================
+                            CONTACTO DESARROLLADOR
+================================================================================
+
+Proyecto desarrollado con Claude (Anthropic)
+Fecha: Febrero 2025
+
+================================================================================

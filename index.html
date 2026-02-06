@@ -1525,6 +1525,151 @@
                 text-align: center;
             }
         }
+
+        /* Cookie Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: -100%; /* Oculto por defecto */
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            padding: 20px 5%;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            transition: bottom 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            border-top: 3px solid var(--accent-sun);
+        }
+
+        .cookie-banner.show {
+            bottom: 0;
+        }
+
+        .cookie-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0;
+        }
+
+        .cookie-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .cookie-btn {
+            background: var(--gradient-sun);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            transition: transform 0.2s;
+            box-shadow: 0 2px 10px rgba(232, 168, 56, 0.2);
+        }
+
+        .cookie-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .cookie-link {
+            color: var(--accent-moon);
+            text-decoration: underline;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* CMP / Cookie Settings Modal */
+        .cookie-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+        .cookie-modal-overlay.show { display: flex; }
+        .cookie-modal {
+            background: var(--card-bg);
+            width: 90%;
+            max-width: 600px;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow-strong);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        .cookie-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 15px;
+        }
+        .cookie-modal-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--accent-moon); margin: 0; }
+        .cookie-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-secondary); }
+        .cookie-category { margin-bottom: 20px; }
+        .cookie-cat-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+        .cookie-cat-title { font-weight: 600; color: var(--text-primary); }
+        .cookie-cat-desc { font-size: 0.85rem; color: var(--text-secondary); margin: 0; }
+        
+        /* Toggle Switch */
+        .switch { position: relative; display: inline-block; width: 50px; height: 26px; flex-shrink: 0; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: var(--accent-sun); }
+        input:checked + .slider:before { transform: translateX(24px); }
+        input:disabled + .slider { opacity: 0.5; cursor: not-allowed; }
+
+        .cookie-modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 30px; border-top: 1px solid var(--border-light); padding-top: 20px; flex-wrap: wrap; }
+        .btn-outline { background: transparent; border: 2px solid var(--accent-moon); color: var(--text-primary); padding: 8px 20px; border-radius: 50px; cursor: pointer; font-weight: 600; font-family: 'Montserrat', sans-serif; transition: all 0.3s; }
+        .btn-outline:hover { background: var(--bg-secondary); }
+
+        /* Floating Reopen Button */
+        .cookie-reopen-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            box-shadow: var(--shadow-medium);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 9990;
+            border: 2px solid var(--accent-sun);
+            transition: transform 0.3s;
+            color: var(--accent-moon);
+        }
+        .cookie-reopen-btn:hover { transform: scale(1.1); }
+        .cookie-reopen-btn svg { width: 24px; height: 24px; }
+
+        @media (max-width: 768px) {
+            .cookie-banner {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+                padding: 25px 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1952,12 +2097,76 @@
         <div class="footer-bottom">
             <p data-i18n="footer_copy">&copy; 2026 Sol i Lluna - Centro de Nutrición. Todos los derechos reservados.</p>
             <div class="footer-legal">
-                <a href="#" data-i18n="footer_privacy">Política de Privacidad</a>
-                <a href="#" data-i18n="footer_legal">Aviso Legal</a>
+                <a href="politica-privacidad.html" data-i18n="footer_privacy">Política de Privacidad</a>
+                <a href="aviso-legal.html" data-i18n="footer_legal">Aviso Legal</a>
                 <a href="#">Cookies</a>
             </div>
         </div>
     </footer>
+
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" class="cookie-banner">
+        <p class="cookie-text" data-i18n="cookie_text">Utilizamos cookies propias y de terceros para mejorar tu experiencia. Si continúas navegando, consideramos que aceptas su uso.</p>
+        <div class="cookie-actions">
+            <button id="cmp-config" class="btn-outline" style="font-size: 0.8rem; padding: 8px 15px;" data-i18n="cmp_config">Configurar</button>
+            <button id="cmp-accept-all" class="cookie-btn" data-i18n="cmp_accept_all">Aceptar todo</button>
+        </div>
+    </div>
+
+    <!-- CMP Modal -->
+    <div id="cookie-modal" class="cookie-modal-overlay">
+        <div class="cookie-modal">
+            <div class="cookie-modal-header">
+                <h3 class="cookie-modal-title" data-i18n="cmp_title">Configuración de Cookies</h3>
+                <button id="cmp-close-modal" class="cookie-close">&times;</button>
+            </div>
+            <p class="cookie-text" style="margin-bottom: 20px;" data-i18n="cmp_desc">Este panel te permite configurar tus preferencias de consentimiento para las cookies que utilizamos.</p>
+            
+            <div class="cookie-category">
+                <div class="cookie-cat-header">
+                    <span class="cookie-cat-title" data-i18n="cmp_necessary">Necesarias</span>
+                    <label class="switch">
+                        <input type="checkbox" checked disabled>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <p class="cookie-cat-desc" data-i18n="cmp_necessary_desc">Son indispensables para el funcionamiento básico de la web.</p>
+            </div>
+
+            <div class="cookie-category">
+                <div class="cookie-cat-header">
+                    <span class="cookie-cat-title" data-i18n="cmp_analytics">Analíticas</span>
+                    <label class="switch">
+                        <input type="checkbox" id="cmp-check-analytics">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <p class="cookie-cat-desc" data-i18n="cmp_analytics_desc">Nos ayudan a entender cómo interactúas con la web para mejorarla.</p>
+            </div>
+
+            <div class="cookie-category">
+                <div class="cookie-cat-header">
+                    <span class="cookie-cat-title" data-i18n="cmp_marketing">Marketing</span>
+                    <label class="switch">
+                        <input type="checkbox" id="cmp-check-marketing">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <p class="cookie-cat-desc" data-i18n="cmp_marketing_desc">Se usan para mostrarte publicidad relevante según tus intereses.</p>
+            </div>
+
+            <div class="cookie-modal-actions">
+                <button id="cmp-reject-all" class="btn-outline" data-i18n="cmp_reject_all">Rechazar todo</button>
+                <button id="cmp-save-prefs" class="btn-outline" data-i18n="cmp_save">Guardar preferencias</button>
+                <button id="cmp-accept-all-modal" class="cookie-btn" data-i18n="cmp_accept_all">Aceptar todo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Button -->
+    <div id="cookie-reopen-btn" class="cookie-reopen-btn" title="Configurar Cookies">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.598 11.064a1.006 1.006 0 00-.854-.172A2.938 2.938 0 0120 11c-1.654 0-3-1.346-3.006-2.937c.005-.035.016-.069.026-.104a1 1 0 00-1.179-1.179a2.939 2.939 0 01-.104.026C14.135 6.994 12.79 5.65 12.79 4c0-.064.005-.128.016-.19a1 1 0 00-1.27-1.148A11.99 11.99 0 002 14c0 6.627 5.373 12 12 12c5.27 0 9.756-3.405 11.37-8.168a1.006 1.006 0 00-.772-1.268zm-9.965 8.571a1.5 1.5 0 110-3a1.5 1.5 0 010 3zm-3-4a1.5 1.5 0 110-3a1.5 1.5 0 010 3zm2-5a1.5 1.5 0 110-3a1.5 1.5 0 010 3z"/></svg>
+    </div>
 
     <!-- StickyWork Integration - DO NOT MODIFY -->
     <script src="https://api.stickywork.com/widget/stickywork-widget.js"></script>
@@ -2020,45 +2229,6 @@
                 mobileBtn.classList.remove('active');
             });
         });
-
-        // IMC Calculator
-        function calcularIMC() {
-            const peso = parseFloat(document.getElementById('peso').value);
-            const altura = parseFloat(document.getElementById('altura').value) / 100;
-            const resultDiv = document.getElementById('calc-result');
-            const imcValue = document.getElementById('imc-value');
-            const imcInterpretation = document.getElementById('imc-interpretation');
-
-            if (peso > 0 && altura > 0) {
-                const imc = (peso / (altura * altura)).toFixed(1);
-                imcValue.textContent = imc;
-
-                let interpretation = '';
-                let color = '';
-
-                if (imc < 18.5) {
-                    interpretation = 'Bajo peso. Te recomendamos una consulta para valorar tu estado nutricional.';
-                    color = '#3498db';
-                } else if (imc < 25) {
-                    interpretation = 'Peso saludable. Mantén tus buenos hábitos alimenticios.';
-                    color = '#27ae60';
-                } else if (imc < 30) {
-                    interpretation = 'Sobrepeso. Un plan nutricional personalizado puede ayudarte a mejorar.';
-                    color = '#f39c12';
-                } else {
-                    interpretation = 'Obesidad. Te recomendamos agendar una consulta para un tratamiento integral.';
-                    color = '#e74c3c';
-                }
-
-                imcValue.style.color = color;
-                imcInterpretation.textContent = interpretation;
-                resultDiv.classList.add('show');
-            } else {
-                imcValue.textContent = '--';
-                imcInterpretation.textContent = 'Por favor, introduce valores válidos de peso y altura.';
-                resultDiv.classList.add('show');
-            }
-        }
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -2227,6 +2397,23 @@
                 footer_privacy: 'Política de Privacitat',
                 footer_legal: 'Avís Legal',
 
+                // Cookies
+                cookie_text: "Utilitzem cookies pròpies i de tercers per millorar la teva experiència. Si continues navegant, considerem que acceptes el seu ús.",
+                
+                // CMP
+                cmp_title: 'Configuració de Cookies',
+                cmp_desc: 'Aquest panell et permet configurar les teves preferències de consentiment per a les cookies que utilitzem.',
+                cmp_necessary: 'Necessàries',
+                cmp_necessary_desc: 'Són indispensables per al funcionament bàsic del web.',
+                cmp_analytics: 'Analítiques',
+                cmp_analytics_desc: 'Ens ajuden a entendre com interactues amb el web per millorar-lo.',
+                cmp_marketing: 'Màrqueting',
+                cmp_marketing_desc: 'S\'utilitzen per mostrar-te publicitat rellevant segons els teus interessos.',
+                cmp_reject_all: 'Rebutjar tot',
+                cmp_save: 'Desar preferències',
+                cmp_accept_all: 'Acceptar tot',
+                cmp_config: 'Configurar',
+
                 // IMC Calculator results (used in JS)
                 imc_bajo: 'Pes baix. Et recomanem una consulta per valorar el teu estat nutricional.',
                 imc_normal: 'Pes saludable. Manté els teus bons hàbits alimentaris.',
@@ -2362,6 +2549,23 @@
                 footer_privacy: 'Política de Privacidad',
                 footer_legal: 'Aviso Legal',
 
+                // Cookies
+                cookie_text: "Utilizamos cookies propias y de terceros para mejorar tu experiencia. Si continúas navegando, consideramos que aceptas su uso.",
+                
+                // CMP
+                cmp_title: 'Configuración de Cookies',
+                cmp_desc: 'Este panel te permite configurar tus preferencias de consentimiento para las cookies que utilizamos.',
+                cmp_necessary: 'Necesarias',
+                cmp_necessary_desc: 'Son indispensables para el funcionamiento básico de la web.',
+                cmp_analytics: 'Analíticas',
+                cmp_analytics_desc: 'Nos ayudan a entender cómo interactúas con la web para mejorarla.',
+                cmp_marketing: 'Marketing',
+                cmp_marketing_desc: 'Se usan para mostrarte publicidad relevante según tus intereses.',
+                cmp_reject_all: 'Rechazar todo',
+                cmp_save: 'Guardar preferencias',
+                cmp_accept_all: 'Aceptar todo',
+                cmp_config: 'Configurar',
+
                 // IMC Calculator results (used in JS)
                 imc_bajo: 'Bajo peso. Te recomendamos una consulta para valorar tu estado nutricional.',
                 imc_normal: 'Peso saludable. Mantén tus buenos hábitos alimenticios.',
@@ -2411,9 +2615,23 @@
             setLanguage(currentLang);
         }
 
-        // Override calcularIMC to use translations
-        const originalCalcIMC = calcularIMC;
-        calcularIMC = function() {
+            // Cookie Banner Logic
+            const cookieBanner = document.getElementById('cookie-banner');
+            const acceptCookiesBtn = document.getElementById('accept-cookies');
+
+            if (!localStorage.getItem('cookiesAccepted')) {
+                setTimeout(() => {
+                    cookieBanner.classList.add('show');
+                }, 2000); // Show after 2 seconds
+            }
+
+            acceptCookiesBtn.addEventListener('click', () => {
+                localStorage.setItem('cookiesAccepted', 'true');
+                cookieBanner.classList.remove('show');
+            });
+
+        // IMC Calculator with translations
+        function calcularIMC() {
             const peso = parseFloat(document.getElementById('peso').value);
             const altura = parseFloat(document.getElementById('altura').value) / 100;
             const resultDiv = document.getElementById('calc-result');
@@ -2450,7 +2668,7 @@
                 imcInterpretation.textContent = t.imc_error;
                 resultDiv.classList.add('show');
             }
-        };
+        }
     </script>
 
 </body>

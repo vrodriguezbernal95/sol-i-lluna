@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -235,6 +235,60 @@
             border-color: transparent;
             color: white;
             transform: rotate(20deg);
+        }
+
+        /* Language Switcher */
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            background: var(--bg-secondary);
+            border: 2px solid var(--accent-moon);
+            border-radius: 50px;
+            padding: 3px;
+            gap: 2px;
+        }
+
+        .lang-option {
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .lang-option.active {
+            background: var(--gradient-moon);
+            color: white;
+        }
+
+        .lang-option:hover:not(.active) {
+            color: var(--accent-moon);
+        }
+
+        .mobile-lang-switch {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 15px 0;
+            border-top: 1px solid var(--border-light);
+            margin-top: 10px;
+        }
+
+        .mobile-lang-switch .lang-option {
+            padding: 8px 20px;
+            font-size: 0.85rem;
+            border: 2px solid var(--accent-moon);
+            border-radius: 50px;
+        }
+
+        .mobile-lang-switch .lang-option.active {
+            border-color: transparent;
         }
 
         .mobile-menu-btn {
@@ -1382,7 +1436,7 @@
         }
 
         @media (max-width: 768px) {
-            .nav-links, .btn-cta, #theme-toggle {
+            .nav-links, .btn-cta, #theme-toggle, .lang-switch {
                 display: none;
             }
 
@@ -1498,12 +1552,16 @@
 
         <nav>
             <ul class="nav-links">
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#nosotros" data-i18n="nav_nosotros">Nosotros</a></li>
+                <li><a href="#servicios" data-i18n="nav_servicios">Servicios</a></li>
+                <li><a href="#testimonios" data-i18n="nav_testimonios">Testimonios</a></li>
                 <li><a href="#calculadora">IMC</a></li>
             </ul>
-            <a href="#reserva" class="btn-cta">Reservar Cita</a>
+            <a href="#reserva" class="btn-cta" data-i18n="nav_reservar">Reservar Cita</a>
+            <div class="lang-switch" id="lang-switch">
+                <button class="lang-option active" data-lang="es">ES</button>
+                <button class="lang-option" data-lang="ca">CA</button>
+            </div>
             <button id="theme-toggle" aria-label="Cambiar tema">
                 <span class="theme-icon">&#9790;</span>
             </button>
@@ -1517,11 +1575,15 @@
     </header>
 
     <div class="mobile-menu" id="mobile-menu">
-        <a href="#nosotros" class="mobile-link">Nosotros</a>
-        <a href="#servicios" class="mobile-link">Servicios</a>
-        <a href="#testimonios" class="mobile-link">Testimonios</a>
-        <a href="#calculadora" class="mobile-link">Calculadora IMC</a>
-        <a href="#reserva" class="mobile-link">Reservar Cita</a>
+        <a href="#nosotros" class="mobile-link" data-i18n="nav_nosotros">Nosotros</a>
+        <a href="#servicios" class="mobile-link" data-i18n="nav_servicios">Servicios</a>
+        <a href="#testimonios" class="mobile-link" data-i18n="nav_testimonios">Testimonios</a>
+        <a href="#calculadora" class="mobile-link" data-i18n="nav_calc_imc">Calculadora IMC</a>
+        <a href="#reserva" class="mobile-link" data-i18n="nav_reservar">Reservar Cita</a>
+        <div class="mobile-lang-switch">
+            <button class="lang-option active" data-lang="es">ES</button>
+            <button class="lang-option" data-lang="ca">CA</button>
+        </div>
     </div>
 
     <main>
@@ -1532,25 +1594,25 @@
             <div class="deco-shape deco-3"></div>
             <div class="deco-shape deco-4"></div>
             <div class="hero-content">
-                <span class="hero-badge">Centro de Nutrición</span>
-                <h1>Nutre tu cuerpo,<br><span class="highlight">equilibra tu vida</span></h1>
-                <p class="hero-subtitle">Planes de alimentación personalizados que se adaptan a tus ritmos naturales. Energía durante el día, descanso reparador por la noche.</p>
+                <span class="hero-badge" data-i18n="hero_badge">Centro de Nutrición</span>
+                <h1 data-i18n-html="hero_title">Nutre tu cuerpo,<br><span class="highlight">equilibra tu vida</span></h1>
+                <p class="hero-subtitle" data-i18n="hero_subtitle">Planes de alimentación personalizados que se adaptan a tus ritmos naturales. Energía durante el día, descanso reparador por la noche.</p>
                 <div class="hero-buttons">
-                    <a href="#reserva" class="btn-primary">Reserva tu Consulta</a>
-                    <a href="#servicios" class="btn-secondary">Conoce Nuestros Servicios</a>
+                    <a href="#reserva" class="btn-primary" data-i18n="hero_btn_primary">Reserva tu Consulta</a>
+                    <a href="#servicios" class="btn-secondary" data-i18n="hero_btn_secondary">Conoce Nuestros Servicios</a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat-item">
                         <div class="stat-number">+500</div>
-                        <div class="stat-label">Pacientes Atendidos</div>
+                        <div class="stat-label" data-i18n="hero_stat1">Pacientes Atendidos</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number">8</div>
-                        <div class="stat-label">Años de Experiencia</div>
+                        <div class="stat-label" data-i18n="hero_stat2">Años de Experiencia</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number">98%</div>
-                        <div class="stat-label">Satisfacción</div>
+                        <div class="stat-label" data-i18n="hero_stat3">Satisfacción</div>
                     </div>
                 </div>
             </div>
@@ -1565,38 +1627,38 @@
                     </div>
                     <div class="about-badge">
                         <div class="about-badge-number">+500</div>
-                        <div class="about-badge-text">Vidas transformadas</div>
+                        <div class="about-badge-text" data-i18n="about_badge">Vidas transformadas</div>
                     </div>
                 </div>
                 <div class="about-content">
-                    <span class="section-tag">Nuestra Filosofía</span>
-                    <h2>Alimentación consciente para cada momento del día</h2>
-                    <p>En Sol i Lluna creemos que la nutrición va más allá de contar calorías. Nuestro enfoque se basa en sincronizar tu alimentación con los ritmos circadianos de tu cuerpo, optimizando tu energía durante el día y favoreciendo un descanso reparador por la noche.</p>
-                    <p>Cada plan nutricional que diseñamos es único, porque tú eres único. Combinamos la ciencia de la cronobiología con las necesidades específicas de tu estilo de vida para crear una relación saludable y sostenible con la comida.</p>
+                    <span class="section-tag" data-i18n="about_tag">Nuestra Filosofía</span>
+                    <h2 data-i18n="about_title">Alimentación consciente para cada momento del día</h2>
+                    <p data-i18n="about_p1">En Sol i Lluna creemos que la nutrición va más allá de contar calorías. Nuestro enfoque se basa en sincronizar tu alimentación con los ritmos circadianos de tu cuerpo, optimizando tu energía durante el día y favoreciendo un descanso reparador por la noche.</p>
+                    <p data-i18n="about_p2">Cada plan nutricional que diseñamos es único, porque tú eres único. Combinamos la ciencia de la cronobiología con las necesidades específicas de tu estilo de vida para crear una relación saludable y sostenible con la comida.</p>
                     <div class="about-features">
                         <div class="about-feature">
                             <svg class="about-feature-icon" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                             </svg>
-                            <span>Planes 100% personalizados</span>
+                            <span data-i18n="about_f1">Planes 100% personalizados</span>
                         </div>
                         <div class="about-feature">
                             <svg class="about-feature-icon" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                             </svg>
-                            <span>Seguimiento continuo</span>
+                            <span data-i18n="about_f2">Seguimiento continuo</span>
                         </div>
                         <div class="about-feature">
                             <svg class="about-feature-icon" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                             </svg>
-                            <span>Enfoque científico</span>
+                            <span data-i18n="about_f3">Enfoque científico</span>
                         </div>
                         <div class="about-feature">
                             <svg class="about-feature-icon" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
                             </svg>
-                            <span>Sin dietas restrictivas</span>
+                            <span data-i18n="about_f4">Sin dietas restrictivas</span>
                         </div>
                     </div>
                 </div>
@@ -1606,75 +1668,75 @@
         <!-- Services Section -->
         <section id="servicios" class="services">
             <div class="section-header">
-                <span class="section-tag">Nuestros Servicios</span>
-                <h2 class="section-title">Soluciones nutricionales para cada necesidad</h2>
-                <p class="section-subtitle">Descubre cómo podemos ayudarte a alcanzar tus objetivos de salud con un enfoque integral y personalizado.</p>
+                <span class="section-tag" data-i18n="svc_tag">Nuestros Servicios</span>
+                <h2 class="section-title" data-i18n="svc_title">Soluciones nutricionales para cada necesidad</h2>
+                <p class="section-subtitle" data-i18n="svc_subtitle">Descubre cómo podemos ayudarte a alcanzar tus objetivos de salud con un enfoque integral y personalizado.</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">&#9728;</div>
-                    <h3>Consulta Inicial</h3>
-                    <p>Evaluación completa de tu estado nutricional, hábitos alimentarios y objetivos personales para diseñar tu plan ideal.</p>
+                    <h3 data-i18n="svc1_title">Consulta Inicial</h3>
+                    <p data-i18n="svc1_desc">Evaluación completa de tu estado nutricional, hábitos alimentarios y objetivos personales para diseñar tu plan ideal.</p>
                     <ul class="service-features">
-                        <li>Análisis de composición corporal</li>
-                        <li>Historia clínica nutricional</li>
-                        <li>Plan alimentario personalizado</li>
-                        <li>Pautas y recomendaciones</li>
+                        <li data-i18n="svc1_f1">Análisis de composición corporal</li>
+                        <li data-i18n="svc1_f2">Historia clínica nutricional</li>
+                        <li data-i18n="svc1_f3">Plan alimentario personalizado</li>
+                        <li data-i18n="svc1_f4">Pautas y recomendaciones</li>
                     </ul>
                 </div>
                 <div class="service-card featured">
                     <div class="service-icon">&#127793;</div>
-                    <h3>Nutrición Deportiva</h3>
-                    <p>Optimiza tu rendimiento físico con planes diseñados específicamente para deportistas y personas activas.</p>
+                    <h3 data-i18n="svc2_title">Nutrición Deportiva</h3>
+                    <p data-i18n="svc2_desc">Optimiza tu rendimiento físico con planes diseñados específicamente para deportistas y personas activas.</p>
                     <ul class="service-features">
-                        <li>Periodización nutricional</li>
-                        <li>Estrategias pre y post entreno</li>
-                        <li>Suplementación basada en evidencia</li>
-                        <li>Recuperación optimizada</li>
+                        <li data-i18n="svc2_f1">Periodización nutricional</li>
+                        <li data-i18n="svc2_f2">Estrategias pre y post entreno</li>
+                        <li data-i18n="svc2_f3">Suplementación basada en evidencia</li>
+                        <li data-i18n="svc2_f4">Recuperación optimizada</li>
                     </ul>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">&#127813;</div>
-                    <h3>Control de Peso</h3>
-                    <p>Alcanza y mantén tu peso ideal de forma saludable y sostenible, sin dietas restrictivas ni efecto rebote.</p>
+                    <h3 data-i18n="svc3_title">Control de Peso</h3>
+                    <p data-i18n="svc3_desc">Alcanza y mantén tu peso ideal de forma saludable y sostenible, sin dietas restrictivas ni efecto rebote.</p>
                     <ul class="service-features">
-                        <li>Pérdida de grasa corporal</li>
-                        <li>Ganancia de masa muscular</li>
-                        <li>Educación nutricional</li>
-                        <li>Cambio de hábitos duradero</li>
+                        <li data-i18n="svc3_f1">Pérdida de grasa corporal</li>
+                        <li data-i18n="svc3_f2">Ganancia de masa muscular</li>
+                        <li data-i18n="svc3_f3">Educación nutricional</li>
+                        <li data-i18n="svc3_f4">Cambio de hábitos duradero</li>
                     </ul>
                 </div>
                 <div class="service-card featured">
                     <div class="service-icon">&#9789;</div>
-                    <h3>Nutrición y Descanso</h3>
-                    <p>Mejora la calidad de tu sueño a través de la alimentación. Descubre cómo lo que comes afecta cómo descansas.</p>
+                    <h3 data-i18n="svc4_title">Nutrición y Descanso</h3>
+                    <p data-i18n="svc4_desc">Mejora la calidad de tu sueño a través de la alimentación. Descubre cómo lo que comes afecta cómo descansas.</p>
                     <ul class="service-features">
-                        <li>Alimentos inductores del sueño</li>
-                        <li>Horarios de comidas optimizados</li>
-                        <li>Reducción del estrés oxidativo</li>
-                        <li>Equilibrio hormonal</li>
+                        <li data-i18n="svc4_f1">Alimentos inductores del sueño</li>
+                        <li data-i18n="svc4_f2">Horarios de comidas optimizados</li>
+                        <li data-i18n="svc4_f3">Reducción del estrés oxidativo</li>
+                        <li data-i18n="svc4_f4">Equilibrio hormonal</li>
                     </ul>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">&#129382;</div>
-                    <h3>Nutrición Clínica</h3>
-                    <p>Tratamiento nutricional especializado para patologías específicas y condiciones de salud particulares.</p>
+                    <h3 data-i18n="svc5_title">Nutrición Clínica</h3>
+                    <p data-i18n="svc5_desc">Tratamiento nutricional especializado para patologías específicas y condiciones de salud particulares.</p>
                     <ul class="service-features">
-                        <li>Diabetes y resistencia a insulina</li>
-                        <li>Patologías digestivas</li>
-                        <li>Intolerancias alimentarias</li>
-                        <li>Trastornos metabólicos</li>
+                        <li data-i18n="svc5_f1">Diabetes y resistencia a insulina</li>
+                        <li data-i18n="svc5_f2">Patologías digestivas</li>
+                        <li data-i18n="svc5_f3">Intolerancias alimentarias</li>
+                        <li data-i18n="svc5_f4">Trastornos metabólicos</li>
                     </ul>
                 </div>
                 <div class="service-card featured">
                     <div class="service-icon">&#128106;</div>
-                    <h3>Nutrición Familiar</h3>
-                    <p>Planes nutricionales para toda la familia. Aprende a cocinar sano y enseña buenos hábitos a los más pequeños.</p>
+                    <h3 data-i18n="svc6_title">Nutrición Familiar</h3>
+                    <p data-i18n="svc6_desc">Planes nutricionales para toda la familia. Aprende a cocinar sano y enseña buenos hábitos a los más pequeños.</p>
                     <ul class="service-features">
-                        <li>Menús semanales familiares</li>
-                        <li>Nutrición infantil</li>
-                        <li>Recetas saludables y fáciles</li>
-                        <li>Organización de compras</li>
+                        <li data-i18n="svc6_f1">Menús semanales familiares</li>
+                        <li data-i18n="svc6_f2">Nutrición infantil</li>
+                        <li data-i18n="svc6_f3">Recetas saludables y fáciles</li>
+                        <li data-i18n="svc6_f4">Organización de compras</li>
                     </ul>
                 </div>
             </div>
@@ -1683,41 +1745,41 @@
         <!-- Testimonials Section -->
         <section id="testimonios" class="testimonials">
             <div class="section-header">
-                <span class="section-tag">Testimonios</span>
-                <h2 class="section-title">Lo que dicen nuestros pacientes</h2>
-                <p class="section-subtitle">Historias reales de personas que han transformado su relación con la alimentación.</p>
+                <span class="section-tag" data-i18n="test_tag">Testimonios</span>
+                <h2 class="section-title" data-i18n="test_title">Lo que dicen nuestros pacientes</h2>
+                <p class="section-subtitle" data-i18n="test_subtitle">Historias reales de personas que han transformado su relación con la alimentación.</p>
             </div>
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <span class="testimonial-quote">"</span>
-                    <p class="testimonial-text">Después de años probando dietas sin éxito, en Sol i Lluna entendieron que mi problema era el enfoque. Ahora como mejor que nunca y he perdido 15 kg sin pasar hambre.</p>
+                    <p class="testimonial-text" data-i18n="test1_text">Después de años probando dietas sin éxito, en Sol i Lluna entendieron que mi problema era el enfoque. Ahora como mejor que nunca y he perdido 15 kg sin pasar hambre.</p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">MG</div>
                         <div class="testimonial-info">
                             <h4>María García</h4>
-                            <span>Perdió 15 kg en 6 meses</span>
+                            <span data-i18n="test1_desc">Perdió 15 kg en 6 meses</span>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <span class="testimonial-quote">"</span>
-                    <p class="testimonial-text">Como deportista, necesitaba un plan que se adaptara a mis entrenamientos. Los resultados han sido increíbles: más energía, mejor recuperación y nuevas marcas personales.</p>
+                    <p class="testimonial-text" data-i18n="test2_text">Como deportista, necesitaba un plan que se adaptara a mis entrenamientos. Los resultados han sido increíbles: más energía, mejor recuperación y nuevas marcas personales.</p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">JL</div>
                         <div class="testimonial-info">
                             <h4>Jordi López</h4>
-                            <span>Triatleta amateur</span>
+                            <span data-i18n="test2_desc">Triatleta amateur</span>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <span class="testimonial-quote">"</span>
-                    <p class="testimonial-text">Tenía problemas de sueño desde hace años. Nunca imaginé que la alimentación pudiera influir tanto. Ahora duermo profundamente y me despierto con energía real.</p>
+                    <p class="testimonial-text" data-i18n="test3_text">Tenía problemas de sueño desde hace años. Nunca imaginé que la alimentación pudiera influir tanto. Ahora duermo profundamente y me despierto con energía real.</p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">AP</div>
                         <div class="testimonial-info">
                             <h4>Ana Puig</h4>
-                            <span>Mejoró su calidad de sueño</span>
+                            <span data-i18n="test3_desc">Mejoró su calidad de sueño</span>
                         </div>
                     </div>
                 </div>
@@ -1727,53 +1789,53 @@
         <!-- Calculator Section -->
         <section id="calculadora" class="calculator">
             <div class="section-header">
-                <span class="section-tag">Herramienta Gratuita</span>
-                <h2 class="section-title">Calcula tu Índice de Masa Corporal</h2>
-                <p class="section-subtitle">El IMC es una medida orientativa de tu estado nutricional. Un buen punto de partida para nuestra conversación.</p>
+                <span class="section-tag" data-i18n="calc_tag">Herramienta Gratuita</span>
+                <h2 class="section-title" data-i18n="calc_title">Calcula tu Índice de Masa Corporal</h2>
+                <p class="section-subtitle" data-i18n="calc_subtitle">El IMC es una medida orientativa de tu estado nutricional. Un buen punto de partida para nuestra conversación.</p>
             </div>
 
             <div class="calc-wrapper">
                 <div class="calc-box">
-                    <h3>Calculadora IMC</h3>
+                    <h3 data-i18n="calc_box_title">Calculadora IMC</h3>
                     <div class="input-row">
                         <div class="input-group">
-                            <label for="peso">Peso (kg)</label>
+                            <label for="peso" data-i18n="calc_peso">Peso (kg)</label>
                             <input type="number" id="peso" placeholder="Ej: 70" min="20" max="300">
                         </div>
                         <div class="input-group">
-                            <label for="altura">Altura (cm)</label>
+                            <label for="altura" data-i18n="calc_altura">Altura (cm)</label>
                             <input type="number" id="altura" placeholder="Ej: 170" min="100" max="250">
                         </div>
                     </div>
-                    <button class="calc-btn" onclick="calcularIMC()">Calcular mi IMC</button>
+                    <button class="calc-btn" onclick="calcularIMC()" data-i18n="calc_btn">Calcular mi IMC</button>
                     <div class="calc-result" id="calc-result">
                         <div class="calc-result-value" id="imc-value">--</div>
-                        <div class="calc-result-label">Tu IMC</div>
+                        <div class="calc-result-label" data-i18n="calc_result_label">Tu IMC</div>
                         <div class="calc-result-interpretation" id="imc-interpretation"></div>
                     </div>
                 </div>
 
                 <div class="imc-reference">
-                    <h4>Rangos de referencia IMC</h4>
+                    <h4 data-i18n="calc_ref_title">Rangos de referencia IMC</h4>
                     <div class="imc-table">
                         <div class="imc-row imc-header">
-                            <span>Categoría</span>
+                            <span data-i18n="calc_cat">Categoría</span>
                             <span>IMC</span>
                         </div>
                         <div class="imc-row bajo-peso">
-                            <span>Bajo peso</span>
+                            <span data-i18n="calc_bajo">Bajo peso</span>
                             <span>&lt; 18.5</span>
                         </div>
                         <div class="imc-row peso-normal">
-                            <span>Peso saludable</span>
+                            <span data-i18n="calc_normal">Peso saludable</span>
                             <span>18.5 - 24.9</span>
                         </div>
                         <div class="imc-row sobrepeso">
-                            <span>Sobrepeso</span>
+                            <span data-i18n="calc_sobrepeso">Sobrepeso</span>
                             <span>25 - 29.9</span>
                         </div>
                         <div class="imc-row obesidad">
-                            <span>Obesidad</span>
+                            <span data-i18n="calc_obesidad">Obesidad</span>
                             <span>&ge; 30</span>
                         </div>
                     </div>
@@ -1781,21 +1843,21 @@
                         <div class="gender-info">
                             <span class="gender-icon">&#9794;</span>
                             <div>
-                                <strong>Hombres</strong>
-                                <p>IMC óptimo: 20 - 25</p>
-                                <p>% grasa ideal: 10-20%</p>
+                                <strong data-i18n="calc_hombres">Hombres</strong>
+                                <p data-i18n="calc_hombres_imc">IMC óptimo: 20 - 25</p>
+                                <p data-i18n="calc_hombres_grasa">% grasa ideal: 10-20%</p>
                             </div>
                         </div>
                         <div class="gender-info">
                             <span class="gender-icon">&#9792;</span>
                             <div>
-                                <strong>Mujeres</strong>
-                                <p>IMC óptimo: 19 - 24</p>
-                                <p>% grasa ideal: 18-28%</p>
+                                <strong data-i18n="calc_mujeres">Mujeres</strong>
+                                <p data-i18n="calc_mujeres_imc">IMC óptimo: 19 - 24</p>
+                                <p data-i18n="calc_mujeres_grasa">% grasa ideal: 18-28%</p>
                             </div>
                         </div>
                     </div>
-                    <p class="imc-disclaimer">El IMC no distingue entre masa muscular y grasa. Deportistas pueden tener IMC alto siendo saludables. Consulta con un profesional para una valoración completa.</p>
+                    <p class="imc-disclaimer" data-i18n="calc_disclaimer">El IMC no distingue entre masa muscular y grasa. Deportistas pueden tener IMC alto siendo saludables. Consulta con un profesional para una valoración completa.</p>
                 </div>
             </div>
         </section>
@@ -1804,9 +1866,9 @@
         <section id="reserva" class="booking">
             <div class="booking-content">
                 <div class="section-header">
-                    <span class="section-tag">Agenda tu Cita</span>
-                    <h2 class="section-title">Comienza tu transformación hoy</h2>
-                    <p class="section-subtitle">Selecciona el día y la hora que mejor se adapte a tu agenda. La primera consulta incluye una evaluación completa.</p>
+                    <span class="section-tag" data-i18n="book_tag">Agenda tu Cita</span>
+                    <h2 class="section-title" data-i18n="book_title">Comienza tu transformación hoy</h2>
+                    <p class="section-subtitle" data-i18n="book_subtitle">Selecciona el día y la hora que mejor se adapte a tu agenda. La primera consulta incluye una evaluación completa.</p>
                 </div>
                 <div class="booking-container">
                     <div id="stickywork-widget"></div>
@@ -1819,7 +1881,7 @@
         <div class="footer-grid">
             <div class="footer-brand">
                 <div class="logo-text">Sol <span style="color: var(--accent-sun);">i</span> Lluna</div>
-                <p>Centro de nutrición especializado en alimentación consciente y personalizada. Te acompañamos en tu camino hacia una vida más saludable.</p>
+                <p data-i18n="footer_desc">Centro de nutrición especializado en alimentación consciente y personalizada. Te acompañamos en tu camino hacia una vida más saludable.</p>
                 <div class="footer-social">
                     <a href="https://www.instagram.com/solillunadiet/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -1839,27 +1901,27 @@
                 </div>
             </div>
             <div class="footer-column">
-                <h4>Navegación</h4>
+                <h4 data-i18n="footer_nav">Navegación</h4>
                 <ul>
-                    <li><a href="#nosotros">Sobre Nosotros</a></li>
-                    <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#testimonios">Testimonios</a></li>
-                    <li><a href="#calculadora">Calculadora IMC</a></li>
-                    <li><a href="#reserva">Reservar Cita</a></li>
+                    <li><a href="#nosotros" data-i18n="footer_nav1">Sobre Nosotros</a></li>
+                    <li><a href="#servicios" data-i18n="footer_nav2">Servicios</a></li>
+                    <li><a href="#testimonios" data-i18n="footer_nav3">Testimonios</a></li>
+                    <li><a href="#calculadora" data-i18n="footer_nav4">Calculadora IMC</a></li>
+                    <li><a href="#reserva" data-i18n="footer_nav5">Reservar Cita</a></li>
                 </ul>
             </div>
             <div class="footer-column">
-                <h4>Servicios</h4>
+                <h4 data-i18n="footer_svc">Servicios</h4>
                 <ul>
-                    <li><a href="#servicios">Consulta Inicial</a></li>
-                    <li><a href="#servicios">Nutrición Deportiva</a></li>
-                    <li><a href="#servicios">Control de Peso</a></li>
-                    <li><a href="#servicios">Nutrición Clínica</a></li>
-                    <li><a href="#servicios">Nutrición Familiar</a></li>
+                    <li><a href="#servicios" data-i18n="footer_svc1">Consulta Inicial</a></li>
+                    <li><a href="#servicios" data-i18n="footer_svc2">Nutrición Deportiva</a></li>
+                    <li><a href="#servicios" data-i18n="footer_svc3">Control de Peso</a></li>
+                    <li><a href="#servicios" data-i18n="footer_svc4">Nutrición Clínica</a></li>
+                    <li><a href="#servicios" data-i18n="footer_svc5">Nutrición Familiar</a></li>
                 </ul>
             </div>
             <div class="footer-column">
-                <h4>Contacto</h4>
+                <h4 data-i18n="footer_contact">Contacto</h4>
                 <div class="footer-contact-item">
                     <svg viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
@@ -1888,10 +1950,10 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Sol i Lluna - Centro de Nutrición. Todos los derechos reservados.</p>
+            <p data-i18n="footer_copy">&copy; 2026 Sol i Lluna - Centro de Nutrición. Todos los derechos reservados.</p>
             <div class="footer-legal">
-                <a href="#">Política de Privacidad</a>
-                <a href="#">Aviso Legal</a>
+                <a href="#" data-i18n="footer_privacy">Política de Privacidad</a>
+                <a href="#" data-i18n="footer_legal">Aviso Legal</a>
                 <a href="#">Cookies</a>
             </div>
         </div>
@@ -2034,6 +2096,361 @@
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(el);
         });
+
+        // ====== LANGUAGE SWITCHER ======
+        const translations = {
+            ca: {
+                // Navigation
+                nav_nosotros: 'Nosaltres',
+                nav_servicios: 'Serveis',
+                nav_testimonios: 'Testimonis',
+                nav_reservar: 'Reservar Cita',
+                nav_calc_imc: 'Calculadora IMC',
+
+                // Hero
+                hero_badge: 'Centre de Nutrició',
+                hero_title: 'Nutreix el teu cos,<br><span class="highlight">equilibra la teva vida</span>',
+                hero_subtitle: "Plans d'alimentació personalitzats que s'adapten als teus ritmes naturals. Energia durant el dia, descans reparador a la nit.",
+                hero_btn_primary: 'Reserva la teva Consulta',
+                hero_btn_secondary: 'Coneix els Nostres Serveis',
+                hero_stat1: 'Pacients Atesos',
+                hero_stat2: "Anys d'Experiència",
+                hero_stat3: 'Satisfacció',
+
+                // About
+                about_tag: 'La Nostra Filosofia',
+                about_title: 'Alimentació conscient per a cada moment del dia',
+                about_p1: "A Sol i Lluna creiem que la nutrició va més enllà de comptar calories. El nostre enfocament es basa en sincronitzar la teva alimentació amb els ritmes circadians del teu cos, optimitzant la teva energia durant el dia i afavorint un descans reparador a la nit.",
+                about_p2: "Cada pla nutricional que dissenyem és únic, perquè tu ets únic. Combinem la ciència de la cronobiologia amb les necessitats específiques del teu estil de vida per crear una relació saludable i sostenible amb el menjar.",
+                about_f1: 'Plans 100% personalitzats',
+                about_f2: 'Seguiment continu',
+                about_f3: 'Enfocament científic',
+                about_f4: 'Sense dietes restrictives',
+                about_badge: 'Vides transformades',
+
+                // Services
+                svc_tag: 'Els Nostres Serveis',
+                svc_title: 'Solucions nutricionals per a cada necessitat',
+                svc_subtitle: "Descobreix com podem ajudar-te a assolir els teus objectius de salut amb un enfocament integral i personalitzat.",
+                svc1_title: 'Consulta Inicial',
+                svc1_desc: "Avaluació completa del teu estat nutricional, hàbits alimentaris i objectius personals per dissenyar el teu pla ideal.",
+                svc1_f1: 'Anàlisi de composició corporal',
+                svc1_f2: 'Història clínica nutricional',
+                svc1_f3: 'Pla alimentari personalitzat',
+                svc1_f4: 'Pautes i recomanacions',
+                svc2_title: 'Nutrició Esportiva',
+                svc2_desc: "Optimitza el teu rendiment físic amb plans dissenyats específicament per a esportistes i persones actives.",
+                svc2_f1: 'Periodització nutricional',
+                svc2_f2: 'Estratègies pre i post entrenament',
+                svc2_f3: 'Suplementació basada en evidència',
+                svc2_f4: 'Recuperació optimitzada',
+                svc3_title: 'Control de Pes',
+                svc3_desc: "Assoleix i manté el teu pes ideal de forma saludable i sostenible, sense dietes restrictives ni efecte rebot.",
+                svc3_f1: 'Pèrdua de greix corporal',
+                svc3_f2: 'Guany de massa muscular',
+                svc3_f3: 'Educació nutricional',
+                svc3_f4: "Canvi d'hàbits durador",
+                svc4_title: 'Nutrició i Descans',
+                svc4_desc: "Millora la qualitat del teu son a través de l'alimentació. Descobreix com el que menges afecta com descanses.",
+                svc4_f1: 'Aliments inductors del son',
+                svc4_f2: "Horaris d'àpats optimitzats",
+                svc4_f3: "Reducció de l'estrès oxidatiu",
+                svc4_f4: 'Equilibri hormonal',
+                svc5_title: 'Nutrició Clínica',
+                svc5_desc: "Tractament nutricional especialitzat per a patologies específiques i condicions de salut particulars.",
+                svc5_f1: 'Diabetis i resistència a la insulina',
+                svc5_f2: 'Patologies digestives',
+                svc5_f3: 'Intoleràncies alimentàries',
+                svc5_f4: 'Trastorns metabòlics',
+                svc6_title: 'Nutrició Familiar',
+                svc6_desc: "Plans nutricionals per a tota la família. Aprèn a cuinar sa i ensenya bons hàbits als més petits.",
+                svc6_f1: 'Menús setmanals familiars',
+                svc6_f2: 'Nutrició infantil',
+                svc6_f3: 'Receptes saludables i fàcils',
+                svc6_f4: 'Organització de compres',
+
+                // Testimonials
+                test_tag: 'Testimonis',
+                test_title: 'El que diuen els nostres pacients',
+                test_subtitle: "Històries reals de persones que han transformat la seva relació amb l'alimentació.",
+                test1_text: "Després d'anys provant dietes sense èxit, a Sol i Lluna van entendre que el meu problema era l'enfocament. Ara menjo millor que mai i he perdut 15 kg sense passar gana.",
+                test1_desc: 'Va perdre 15 kg en 6 mesos',
+                test2_text: "Com a esportista, necessitava un pla que s'adaptés als meus entrenaments. Els resultats han estat increïbles: més energia, millor recuperació i noves marques personals.",
+                test2_desc: 'Triatleta amateur',
+                test3_text: "Tenia problemes de son des de fa anys. Mai no vaig imaginar que l'alimentació pogués influir tant. Ara dormo profundament i em desperto amb energia real.",
+                test3_desc: 'Va millorar la seva qualitat de son',
+
+                // Calculator
+                calc_tag: 'Eina Gratuïta',
+                calc_title: "Calcula el teu Índex de Massa Corporal",
+                calc_subtitle: "L'IMC és una mesura orientativa del teu estat nutricional. Un bon punt de partida per a la nostra conversa.",
+                calc_box_title: 'Calculadora IMC',
+                calc_peso: 'Pes (kg)',
+                calc_altura: 'Alçada (cm)',
+                calc_btn: 'Calcular el meu IMC',
+                calc_result_label: 'El teu IMC',
+                calc_ref_title: "Rangs de referència IMC",
+                calc_cat: 'Categoria',
+                calc_bajo: 'Pes baix',
+                calc_normal: 'Pes saludable',
+                calc_sobrepeso: 'Sobrepès',
+                calc_obesidad: 'Obesitat',
+                calc_hombres: 'Homes',
+                calc_hombres_imc: 'IMC òptim: 20 - 25',
+                calc_hombres_grasa: '% greix ideal: 10-20%',
+                calc_mujeres: 'Dones',
+                calc_mujeres_imc: 'IMC òptim: 19 - 24',
+                calc_mujeres_grasa: '% greix ideal: 18-28%',
+                calc_disclaimer: "L'IMC no distingeix entre massa muscular i greix. Els esportistes poden tenir un IMC alt sent saludables. Consulta amb un professional per a una valoració completa.",
+
+                // Booking
+                book_tag: 'Agenda la teva Cita',
+                book_title: 'Comença la teva transformació avui',
+                book_subtitle: "Selecciona el dia i l'hora que millor s'adapti a la teva agenda. La primera consulta inclou una avaluació completa.",
+
+                // Footer
+                footer_desc: "Centre de nutrició especialitzat en alimentació conscient i personalitzada. T'acompanyem en el teu camí cap a una vida més saludable.",
+                footer_nav: 'Navegació',
+                footer_nav1: 'Sobre Nosaltres',
+                footer_nav2: 'Serveis',
+                footer_nav3: 'Testimonis',
+                footer_nav4: 'Calculadora IMC',
+                footer_nav5: 'Reservar Cita',
+                footer_svc: 'Serveis',
+                footer_svc1: 'Consulta Inicial',
+                footer_svc2: 'Nutrició Esportiva',
+                footer_svc3: 'Control de Pes',
+                footer_svc4: 'Nutrició Clínica',
+                footer_svc5: 'Nutrició Familiar',
+                footer_contact: 'Contacte',
+                footer_copy: '© 2026 Sol i Lluna - Centre de Nutrició. Tots els drets reservats.',
+                footer_privacy: 'Política de Privacitat',
+                footer_legal: 'Avís Legal',
+
+                // IMC Calculator results (used in JS)
+                imc_bajo: 'Pes baix. Et recomanem una consulta per valorar el teu estat nutricional.',
+                imc_normal: 'Pes saludable. Manté els teus bons hàbits alimentaris.',
+                imc_sobrepeso: 'Sobrepès. Un pla nutricional personalitzat pot ajudar-te a millorar.',
+                imc_obesidad: "Obesitat. Et recomanem agendar una consulta per a un tractament integral.",
+                imc_error: "Si us plau, introdueix valors vàlids de pes i alçada."
+            },
+            es: {
+                // Navigation
+                nav_nosotros: 'Nosotros',
+                nav_servicios: 'Servicios',
+                nav_testimonios: 'Testimonios',
+                nav_reservar: 'Reservar Cita',
+                nav_calc_imc: 'Calculadora IMC',
+
+                // Hero
+                hero_badge: 'Centro de Nutrición',
+                hero_title: 'Nutre tu cuerpo,<br><span class="highlight">equilibra tu vida</span>',
+                hero_subtitle: 'Planes de alimentación personalizados que se adaptan a tus ritmos naturales. Energía durante el día, descanso reparador por la noche.',
+                hero_btn_primary: 'Reserva tu Consulta',
+                hero_btn_secondary: 'Conoce Nuestros Servicios',
+                hero_stat1: 'Pacientes Atendidos',
+                hero_stat2: 'Años de Experiencia',
+                hero_stat3: 'Satisfacción',
+
+                // About
+                about_tag: 'Nuestra Filosofía',
+                about_title: 'Alimentación consciente para cada momento del día',
+                about_p1: 'En Sol i Lluna creemos que la nutrición va más allá de contar calorías. Nuestro enfoque se basa en sincronizar tu alimentación con los ritmos circadianos de tu cuerpo, optimizando tu energía durante el día y favoreciendo un descanso reparador por la noche.',
+                about_p2: 'Cada plan nutricional que diseñamos es único, porque tú eres único. Combinamos la ciencia de la cronobiología con las necesidades específicas de tu estilo de vida para crear una relación saludable y sostenible con la comida.',
+                about_f1: 'Planes 100% personalizados',
+                about_f2: 'Seguimiento continuo',
+                about_f3: 'Enfoque científico',
+                about_f4: 'Sin dietas restrictivas',
+                about_badge: 'Vidas transformadas',
+
+                // Services
+                svc_tag: 'Nuestros Servicios',
+                svc_title: 'Soluciones nutricionales para cada necesidad',
+                svc_subtitle: 'Descubre cómo podemos ayudarte a alcanzar tus objetivos de salud con un enfoque integral y personalizado.',
+                svc1_title: 'Consulta Inicial',
+                svc1_desc: 'Evaluación completa de tu estado nutricional, hábitos alimentarios y objetivos personales para diseñar tu plan ideal.',
+                svc1_f1: 'Análisis de composición corporal',
+                svc1_f2: 'Historia clínica nutricional',
+                svc1_f3: 'Plan alimentario personalizado',
+                svc1_f4: 'Pautas y recomendaciones',
+                svc2_title: 'Nutrición Deportiva',
+                svc2_desc: 'Optimiza tu rendimiento físico con planes diseñados específicamente para deportistas y personas activas.',
+                svc2_f1: 'Periodización nutricional',
+                svc2_f2: 'Estrategias pre y post entreno',
+                svc2_f3: 'Suplementación basada en evidencia',
+                svc2_f4: 'Recuperación optimizada',
+                svc3_title: 'Control de Peso',
+                svc3_desc: 'Alcanza y mantén tu peso ideal de forma saludable y sostenible, sin dietas restrictivas ni efecto rebote.',
+                svc3_f1: 'Pérdida de grasa corporal',
+                svc3_f2: 'Ganancia de masa muscular',
+                svc3_f3: 'Educación nutricional',
+                svc3_f4: 'Cambio de hábitos duradero',
+                svc4_title: 'Nutrición y Descanso',
+                svc4_desc: 'Mejora la calidad de tu sueño a través de la alimentación. Descubre cómo lo que comes afecta cómo descansas.',
+                svc4_f1: 'Alimentos inductores del sueño',
+                svc4_f2: 'Horarios de comidas optimizados',
+                svc4_f3: 'Reducción del estrés oxidativo',
+                svc4_f4: 'Equilibrio hormonal',
+                svc5_title: 'Nutrición Clínica',
+                svc5_desc: 'Tratamiento nutricional especializado para patologías específicas y condiciones de salud particulares.',
+                svc5_f1: 'Diabetes y resistencia a insulina',
+                svc5_f2: 'Patologías digestivas',
+                svc5_f3: 'Intolerancias alimentarias',
+                svc5_f4: 'Trastornos metabólicos',
+                svc6_title: 'Nutrición Familiar',
+                svc6_desc: 'Planes nutricionales para toda la familia. Aprende a cocinar sano y enseña buenos hábitos a los más pequeños.',
+                svc6_f1: 'Menús semanales familiares',
+                svc6_f2: 'Nutrición infantil',
+                svc6_f3: 'Recetas saludables y fáciles',
+                svc6_f4: 'Organización de compras',
+
+                // Testimonials
+                test_tag: 'Testimonios',
+                test_title: 'Lo que dicen nuestros pacientes',
+                test_subtitle: 'Historias reales de personas que han transformado su relación con la alimentación.',
+                test1_text: 'Después de años probando dietas sin éxito, en Sol i Lluna entendieron que mi problema era el enfoque. Ahora como mejor que nunca y he perdido 15 kg sin pasar hambre.',
+                test1_desc: 'Perdió 15 kg en 6 meses',
+                test2_text: 'Como deportista, necesitaba un plan que se adaptara a mis entrenamientos. Los resultados han sido increíbles: más energía, mejor recuperación y nuevas marcas personales.',
+                test2_desc: 'Triatleta amateur',
+                test3_text: 'Tenía problemas de sueño desde hace años. Nunca imaginé que la alimentación pudiera influir tanto. Ahora duermo profundamente y me despierto con energía real.',
+                test3_desc: 'Mejoró su calidad de sueño',
+
+                // Calculator
+                calc_tag: 'Herramienta Gratuita',
+                calc_title: 'Calcula tu Índice de Masa Corporal',
+                calc_subtitle: 'El IMC es una medida orientativa de tu estado nutricional. Un buen punto de partida para nuestra conversación.',
+                calc_box_title: 'Calculadora IMC',
+                calc_peso: 'Peso (kg)',
+                calc_altura: 'Altura (cm)',
+                calc_btn: 'Calcular mi IMC',
+                calc_result_label: 'Tu IMC',
+                calc_ref_title: 'Rangos de referencia IMC',
+                calc_cat: 'Categoría',
+                calc_bajo: 'Bajo peso',
+                calc_normal: 'Peso saludable',
+                calc_sobrepeso: 'Sobrepeso',
+                calc_obesidad: 'Obesidad',
+                calc_hombres: 'Hombres',
+                calc_hombres_imc: 'IMC óptimo: 20 - 25',
+                calc_hombres_grasa: '% grasa ideal: 10-20%',
+                calc_mujeres: 'Mujeres',
+                calc_mujeres_imc: 'IMC óptimo: 19 - 24',
+                calc_mujeres_grasa: '% grasa ideal: 18-28%',
+                calc_disclaimer: 'El IMC no distingue entre masa muscular y grasa. Deportistas pueden tener IMC alto siendo saludables. Consulta con un profesional para una valoración completa.',
+
+                // Booking
+                book_tag: 'Agenda tu Cita',
+                book_title: 'Comienza tu transformación hoy',
+                book_subtitle: 'Selecciona el día y la hora que mejor se adapte a tu agenda. La primera consulta incluye una evaluación completa.',
+
+                // Footer
+                footer_desc: 'Centro de nutrición especializado en alimentación consciente y personalizada. Te acompañamos en tu camino hacia una vida más saludable.',
+                footer_nav: 'Navegación',
+                footer_nav1: 'Sobre Nosotros',
+                footer_nav2: 'Servicios',
+                footer_nav3: 'Testimonios',
+                footer_nav4: 'Calculadora IMC',
+                footer_nav5: 'Reservar Cita',
+                footer_svc: 'Servicios',
+                footer_svc1: 'Consulta Inicial',
+                footer_svc2: 'Nutrición Deportiva',
+                footer_svc3: 'Control de Peso',
+                footer_svc4: 'Nutrición Clínica',
+                footer_svc5: 'Nutrición Familiar',
+                footer_contact: 'Contacto',
+                footer_copy: '© 2026 Sol i Lluna - Centro de Nutrición. Todos los derechos reservados.',
+                footer_privacy: 'Política de Privacidad',
+                footer_legal: 'Aviso Legal',
+
+                // IMC Calculator results (used in JS)
+                imc_bajo: 'Bajo peso. Te recomendamos una consulta para valorar tu estado nutricional.',
+                imc_normal: 'Peso saludable. Mantén tus buenos hábitos alimenticios.',
+                imc_sobrepeso: 'Sobrepeso. Un plan nutricional personalizado puede ayudarte a mejorar.',
+                imc_obesidad: 'Obesidad. Te recomendamos agendar una consulta para un tratamiento integral.',
+                imc_error: 'Por favor, introduce valores válidos de peso y altura.'
+            }
+        };
+
+        let currentLang = localStorage.getItem('lang') || 'es';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+            document.documentElement.lang = lang;
+
+            const t = translations[lang];
+            if (!t) return;
+
+            // Update text content
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key]) el.textContent = t[key];
+            });
+
+            // Update HTML content (elements with rich markup)
+            document.querySelectorAll('[data-i18n-html]').forEach(el => {
+                const key = el.getAttribute('data-i18n-html');
+                if (t[key]) el.innerHTML = t[key];
+            });
+
+            // Update active state on all switchers
+            document.querySelectorAll('.lang-option').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
+        }
+
+        // Attach click handlers to all lang buttons
+        document.querySelectorAll('.lang-option').forEach(btn => {
+            btn.addEventListener('click', () => {
+                setLanguage(btn.getAttribute('data-lang'));
+            });
+        });
+
+        // Apply saved language on load
+        if (currentLang !== 'es') {
+            setLanguage(currentLang);
+        }
+
+        // Override calcularIMC to use translations
+        const originalCalcIMC = calcularIMC;
+        calcularIMC = function() {
+            const peso = parseFloat(document.getElementById('peso').value);
+            const altura = parseFloat(document.getElementById('altura').value) / 100;
+            const resultDiv = document.getElementById('calc-result');
+            const imcValue = document.getElementById('imc-value');
+            const imcInterpretation = document.getElementById('imc-interpretation');
+            const t = translations[currentLang];
+
+            if (peso > 0 && altura > 0) {
+                const imc = (peso / (altura * altura)).toFixed(1);
+                imcValue.textContent = imc;
+
+                let interpretation = '';
+                let color = '';
+
+                if (imc < 18.5) {
+                    interpretation = t.imc_bajo;
+                    color = '#3498db';
+                } else if (imc < 25) {
+                    interpretation = t.imc_normal;
+                    color = '#27ae60';
+                } else if (imc < 30) {
+                    interpretation = t.imc_sobrepeso;
+                    color = '#f39c12';
+                } else {
+                    interpretation = t.imc_obesidad;
+                    color = '#e74c3c';
+                }
+
+                imcValue.style.color = color;
+                imcInterpretation.textContent = interpretation;
+                resultDiv.classList.add('show');
+            } else {
+                imcValue.textContent = '--';
+                imcInterpretation.textContent = t.imc_error;
+                resultDiv.classList.add('show');
+            }
+        };
     </script>
 
 </body>
